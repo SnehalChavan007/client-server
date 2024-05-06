@@ -4,11 +4,14 @@ import re
 def send_data(name, email, ID):
     xml_data = f"<KPIT>\n<Name>{name}</Name>\n<Email>{email}</Email>\n<ID>{ID}</ID>\n</KPIT>"
     
-    client_socket = socket.socket()
-    client_socket.connect(('172.17.0.1', 9992))
-    client_socket.send(xml_data.encode())
-    print("Data sent to server successfully.")
-    client_socket.close()
+    try:
+        client_socket = socket.socket()
+        client_socket.connect(('172.17.0.1', 9992))
+        client_socket.send(xml_data.encode())
+        print("Data sent to server successfully.")
+        client_socket.close()
+    except ConnectionRefusedError:
+        print("Connection refused. Server may not be running.")
 
 def validate_input(name, email, ID):
     if not name.isalpha():
@@ -23,14 +26,17 @@ def validate_input(name, email, ID):
     return True
 
 def main():
-    name = input("Enter name: ")
-    email = input("Enter email: ")
-    ID = input("Enter ID: ")
+    try:
+        name = input("Enter name: ")
+        email = input("Enter email: ")
+        ID = input("Enter ID: ")
 
-    if validate_input(name, email, ID):
-        send_data(name, email, ID)
-    else:
-        main()
+        if validate_input(name, email, ID):
+            send_data(name, email, ID)
+        else:
+            main()
+    except Exception as e:
+        print("An error occurred:", e)
 
 if __name__ == "__main__":
     main()

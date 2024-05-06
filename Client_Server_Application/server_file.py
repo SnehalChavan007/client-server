@@ -18,8 +18,8 @@ def store_data(name, email, ID):
     try:
         connection = mysql.connector.connect(
             host="localhost",
-            user="root",
-            password="Root@123",
+            user="admin",
+            password="admin123",
             database="employee_data"
         )
 
