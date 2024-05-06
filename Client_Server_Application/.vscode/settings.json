@@ -1,0 +1,32 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "172.17.0.1",
+            "port": 9992,
+            "driver": "MySQL",
+            "name": "data",
+            "database": "data",
+            "username": "root",
+            "password": "root123"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 9992,
+            "driver": "MySQL",
+            "name": "root",
+            "database": "data",
+            "username": "root",
+            "password": "Root@123"
+        }
+    ]
+}
